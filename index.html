@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>San Francisco – 3.5 Days · Apr 2026</title>
+  <title>San Francisco · April 2026</title>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600;9..144,800&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     :root {
@@ -13,1102 +13,913 @@
       --border: #d4cec2;
       --text: #1a1a1a;
       --text-dim: #6b6560;
-      --text-light: #9b9590;
       --accent: #c0392b;
-      --accent-soft: #f5ddd9;
-      --blue: #2a6496;
-      --blue-soft: #d4e3f0;
-      --green: #1d7a5f;
-      --green-soft: #d0ece3;
-      --amber: #a07820;
-      --amber-soft: #f0e6cc;
+      --accent-soft: #f5d5d2;
+      --gold: #b8860b;
+      --gold-soft: #fdf0cb;
+      --teal: #0b7a75;
+      --teal-soft: #c8e8e6;
       --navy: #1e3a5f;
-      --shadow: 0 1px 3px rgba(0,0,0,0.07), 0 1px 2px rgba(0,0,0,0.04);
-      --shadow-lg: 0 4px 14px rgba(0,0,0,0.09), 0 2px 4px rgba(0,0,0,0.05);
+      --navy-soft: #d0dae8;
+      --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
-      font-family: 'Instrument Sans', system-ui, -apple-system, sans-serif;
+      font-family: 'Instrument Sans', sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.65;
-      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
     }
 
-    /* ── HERO ── */
+    /* NAV */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(245, 240, 232, 0.82);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(212, 206, 194, 0.6);
+      padding: 0 24px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-brand {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: 16px;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .nav-meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--text-dim);
+    }
+
+    /* HERO */
     .hero {
       background: var(--navy);
-      color: #f5f0e8;
-      padding: 3.5rem 1.5rem 2.75rem;
-      position: relative;
-      overflow: hidden;
+      background-image:
+        radial-gradient(ellipse at 70% 30%, rgba(192, 57, 43, 0.4) 0%, transparent 60%),
+        radial-gradient(ellipse at 15% 85%, rgba(192, 57, 43, 0.15) 0%, transparent 50%);
+      padding: 120px 24px 72px;
+      color: white;
     }
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse at 12% 45%, rgba(192,57,43,0.20) 0%, transparent 55%),
-        radial-gradient(ellipse at 88% 20%, rgba(42,100,150,0.16) 0%, transparent 55%),
-        radial-gradient(ellipse at 55% 80%, rgba(192,57,43,0.08) 0%, transparent 50%);
-      pointer-events: none;
+    .hero-inner {
+      max-width: 720px;
+      margin: 0 auto;
     }
-    .hero-inner { max-width: 720px; margin: 0 auto; position: relative; z-index: 1; }
     .hero-eyebrow {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.70rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: rgba(245,240,232,0.55);
-      margin-bottom: 0.8rem;
-    }
-    .hero h1 {
-      font-family: 'Fraunces', serif;
-      font-size: clamp(2.6rem, 7.5vw, 4.2rem);
-      font-weight: 800;
-      line-height: 1.04;
-      letter-spacing: -0.03em;
-      margin-bottom: 0.65rem;
-    }
-    .hero-sub {
-      font-size: 1rem;
-      color: rgba(245,240,232,0.72);
-      max-width: 480px;
-      line-height: 1.5;
-      margin-bottom: 1.3rem;
-    }
-    .hero-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.45rem;
-    }
-    .hero-tag {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.67rem;
-      padding: 0.28rem 0.6rem;
-      border: 1px solid rgba(245,240,232,0.28);
-      border-radius: 999px;
-      color: rgba(245,240,232,0.88);
-      letter-spacing: 0.02em;
-    }
-
-    /* ── NAV ── */
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-      overflow-x: auto;
-      scrollbar-width: none;
-    }
-    .nav::-webkit-scrollbar { display: none; }
-    .nav-inner {
-      display: flex;
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-    .nav a {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.70rem;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-      color: var(--text-dim);
-      text-decoration: none;
-      padding: 0.85rem 0.9rem;
-      border-bottom: 2px solid transparent;
-      transition: color 0.15s, border-color 0.15s;
-      white-space: nowrap;
-    }
-    .nav a:hover { color: var(--accent); border-bottom-color: var(--accent); }
-
-    /* ── OVERVIEW STRIP ── */
-    .overview {
-      background: var(--bg2);
-      border-bottom: 1px solid var(--border);
-      padding: 0.9rem 1.5rem;
-      overflow-x: auto;
-      scrollbar-width: none;
-    }
-    .overview::-webkit-scrollbar { display: none; }
-    .overview-inner {
-      display: flex;
-      gap: 0.6rem;
-      max-width: 720px;
-      margin: 0 auto;
-      white-space: nowrap;
-    }
-    .chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.67rem;
-      padding: 0.35rem 0.7rem;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      white-space: nowrap;
-    }
-    .chip-label { color: var(--text-dim); }
-
-    /* ── MAIN ── */
-    .main { max-width: 720px; margin: 0 auto; padding: 0 1.5rem 5rem; }
-
-    /* ── ALERT ── */
-    .alert {
-      display: flex;
-      gap: 0.6rem;
-      align-items: flex-start;
-      background: var(--accent-soft);
-      border: 1px solid rgba(192,57,43,0.35);
-      border-radius: 9px;
-      padding: 0.8rem 1rem;
-      margin-top: 2rem;
-      font-size: 0.85rem;
-      line-height: 1.5;
-    }
-    .alert-icon { font-size: 1rem; flex-shrink: 0; margin-top: 0.05rem; }
-    .alert strong { color: var(--accent); }
-
-    /* ── DAY SECTION ── */
-    .day-section { padding-top: 3.25rem; }
-    .day-header {
-      display: flex;
-      align-items: baseline;
-      gap: 0.8rem;
-      flex-wrap: wrap;
-      margin-bottom: 1.5rem;
-      padding-bottom: 0.8rem;
-      border-bottom: 2px solid var(--border);
-    }
-    .day-label {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.68rem;
+      font-size: 11px;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--accent);
-      background: var(--accent-soft);
-      padding: 0.2rem 0.55rem;
-      border-radius: 4px;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 16px;
     }
-    .day-title {
+    .hero-title {
       font-family: 'Fraunces', serif;
-      font-size: 1.45rem;
-      font-weight: 600;
-      flex: 1;
-      min-width: 0;
+      font-size: clamp(52px, 10vw, 88px);
+      font-weight: 800;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+      color: #fff;
     }
-    .day-meta {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.65rem;
-      color: var(--text-dim);
-      white-space: nowrap;
-    }
-
-    /* ── TIME BLOCK ── */
-    .time-block { margin-bottom: 1.5rem; }
-    .time-label {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.62rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--text-light);
-      margin-bottom: 0.7rem;
+    .hero-title span { color: var(--accent); }
+    .hero-sub {
+      font-size: 16px;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 40px;
+      font-weight: 400;
     }
 
-    /* ── TRANSPORT CONNECTOR ── */
-    .connector {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.3rem 0.5rem;
-      margin: 0.25rem 0;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.64rem;
-      color: var(--text-dim);
-    }
-    .connector::before { content: '↓'; color: var(--border); font-size: 0.9rem; }
-
-    /* ── CARD ── */
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 11px;
-      padding: 1rem 1.15rem;
-      margin-bottom: 0.55rem;
-      box-shadow: var(--shadow);
-    }
-    .card-head {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.6rem;
-      margin-bottom: 0.45rem;
-    }
-    .card-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.05rem; }
-    .card-name {
-      font-weight: 600;
-      font-size: 0.93rem;
-      line-height: 1.3;
-      flex: 1;
-    }
-    .badge {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.60rem;
-      padding: 0.18rem 0.48rem;
-      border-radius: 999px;
-      white-space: nowrap;
-      flex-shrink: 0;
-      letter-spacing: 0.02em;
-    }
-    .b-free  { background: var(--green-soft); color: var(--green); }
-    .b-pay   { background: var(--amber-soft); color: var(--amber); }
-    .b-book  { background: var(--accent-soft); color: var(--accent); }
-    .b-food  { background: var(--blue-soft); color: var(--blue); }
-    .b-info  { background: var(--bg2); color: var(--text-dim); border: 1px solid var(--border); }
-
-    .card-desc {
-      font-size: 0.875rem;
-      color: var(--text-dim);
-      line-height: 1.58;
-      padding-left: 1.7rem;
-      margin-bottom: 0.65rem;
-    }
-    .card-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.35rem;
-      padding-left: 1.7rem;
-    }
-    .pill {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.60rem;
-      color: var(--text-dim);
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 0.18rem 0.42rem;
-    }
-    .pill-accent { background: var(--accent-soft); color: var(--accent); border-color: rgba(192,57,43,0.25); }
-
-    /* ── TIPS ── */
-    .tips-section { padding-top: 3.25rem; }
-    .tips-heading {
-      font-family: 'Fraunces', serif;
-      font-size: 1.45rem;
-      font-weight: 600;
-      margin-bottom: 1.25rem;
-      padding-bottom: 0.8rem;
-      border-bottom: 2px solid var(--border);
-    }
-    .tips-grid {
+    .flight-cards {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 0.7rem;
+      gap: 12px;
     }
-    @media (max-width: 520px) { .tips-grid { grid-template-columns: 1fr; } }
-    .tip-card {
+    @media (max-width: 520px) { .flight-cards { grid-template-columns: 1fr; } }
+
+    .flight-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 12px;
+      padding: 16px 18px;
+    }
+    .flight-card-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 6px;
+    }
+    .flight-card-route {
+      font-family: 'Fraunces', serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .flight-card-detail {
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+    }
+    .flight-card-time {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: rgba(255,255,255,0.7);
+      margin-top: 6px;
+    }
+
+    /* HOTEL CARD */
+    .hotel-card {
+      background: var(--navy);
+      color: white;
+      border-radius: 16px;
+      padding: 24px 28px;
+      margin: 40px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+    }
+    .hotel-icon { font-size: 28px; flex-shrink: 0; margin-top: 2px; }
+    .hotel-name {
+      font-family: 'Fraunces', serif;
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .hotel-address { font-size: 13px; color: rgba(255,255,255,0.55); margin-bottom: 10px; }
+    .hotel-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .hotel-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 4px;
+      padding: 3px 8px;
+      color: rgba(255,255,255,0.7);
+    }
+
+    /* OVERVIEW */
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .overview-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .chip {
+      display: flex;
+      align-items: center;
+      gap: 6px;
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 11px;
-      padding: 1rem 1.1rem;
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 13px;
+      color: var(--text);
       box-shadow: var(--shadow);
     }
-    .tip-title {
+    .chip-icon { font-size: 14px; }
+
+    /* ARRIVAL DAY */
+    .arrival-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--gold);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin: 32px 0 0;
+      box-shadow: var(--shadow);
+    }
+    .arrival-box-label {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.63rem;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+    .arrival-box-title {
+      font-family: 'Fraunces', serif;
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .arrival-box-desc {
+      font-size: 14px;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+
+    /* SECTIONS */
+    .section {
+      padding: 48px 0 0;
+    }
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-dim);
+      margin-bottom: 4px;
+    }
+    .section-title {
+      font-family: 'Fraunces', serif;
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 28px;
+      color: var(--text);
+    }
+    .section-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      background: var(--accent);
+      color: white;
+      border-radius: 50%;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 500;
+      margin-right: 10px;
+      vertical-align: middle;
+      flex-shrink: 0;
+    }
+
+    /* DAY DIVIDER */
+    .day-divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 28px 0 20px;
+    }
+    .day-divider::before,
+    .day-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    .day-divider-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
       text-transform: uppercase;
       letter-spacing: 0.1em;
       color: var(--text-dim);
-      margin-bottom: 0.6rem;
-    }
-    .tip-card ul { list-style: none; font-size: 0.83rem; line-height: 1.75; }
-    .tip-card li::before { content: '·'; color: var(--accent); margin-right: 0.4rem; font-weight: 700; }
-
-    /* ── DIVIDER ── */
-    .section-divider {
-      border: none;
-      border-top: 1px dashed var(--border);
-      margin: 1.25rem 0;
+      white-space: nowrap;
+      padding: 4px 10px;
+      background: var(--bg2);
+      border-radius: 20px;
+      border: 1px solid var(--border);
     }
 
-    /* ── FOOTER ── */
-    footer {
-      text-align: center;
+    /* TIMELINE */
+    .timeline {
+      position: relative;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 15px;
+      top: 8px;
+      bottom: 8px;
+      width: 1px;
+      background: var(--border);
+    }
+    .stop {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 24px;
+      position: relative;
+    }
+    .stop-dot {
+      flex-shrink: 0;
+      width: 31px;
+      height: 31px;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+      margin-top: 1px;
+    }
+    .stop-dot-inner {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--text-dim);
+    }
+    .stop-dot.accent  { border-color: var(--accent); background: var(--accent-soft); }
+    .stop-dot.accent  .stop-dot-inner { background: var(--accent); }
+    .stop-dot.teal    { border-color: var(--teal); background: var(--teal-soft); }
+    .stop-dot.teal    .stop-dot-inner { background: var(--teal); }
+    .stop-dot.gold    { border-color: var(--gold); background: var(--gold-soft); }
+    .stop-dot.gold    .stop-dot-inner { background: var(--gold); }
+    .stop-dot.navy    { border-color: var(--navy); background: var(--navy-soft); }
+    .stop-dot.navy    .stop-dot-inner { background: var(--navy); }
+
+    .stop-content { flex: 1; min-width: 0; }
+    .stop-time {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.62rem;
-      color: var(--text-light);
-      padding: 2.5rem 1.5rem;
+      font-size: 11px;
+      color: var(--text-dim);
+      margin-bottom: 2px;
+    }
+    .stop-name {
+      font-weight: 600;
+      font-size: 15px;
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+    .stop-desc {
+      font-size: 13px;
+      color: var(--text-dim);
+      line-height: 1.6;
+      margin-bottom: 6px;
+    }
+    .stop-meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--text-dim);
+    }
+    .stop-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-top: 6px;
+    }
+    .stop-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      padding: 2px 7px;
+      border-radius: 4px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+    }
+    .stop-tag.red   { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
+    .stop-tag.teal  { background: var(--teal-soft); border-color: var(--teal); color: var(--teal); }
+    .stop-tag.gold  { background: var(--gold-soft); border-color: var(--gold); color: var(--gold); }
+    .stop-tag.navy  { background: var(--navy-soft); border-color: var(--navy); color: var(--navy); }
+
+    /* NOTE BOXES */
+    .note-amber {
+      background: var(--gold-soft);
+      border: 1px solid rgba(184,134,11,0.25);
+      border-radius: 10px;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .note-amber strong { color: var(--gold); }
+    .note-teal {
+      background: var(--teal-soft);
+      border: 1px solid rgba(11,122,117,0.25);
+      border-radius: 10px;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .note-teal strong { color: var(--teal); }
+    .note-red {
+      background: var(--accent-soft);
+      border: 1px solid rgba(192,57,43,0.25);
+      border-radius: 10px;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .note-red strong { color: var(--accent); }
+    .tip {
+      background: var(--navy-soft);
+      border: 1px solid rgba(30,58,95,0.2);
+      border-radius: 10px;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .tip strong { color: var(--navy); }
+
+    /* COLLAPSIBLE */
+    .collapse-trigger {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      padding: 14px 18px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      margin: 8px 0;
+      font-weight: 600;
+      font-size: 14px;
+      user-select: none;
+      transition: background 0.15s;
+    }
+    .collapse-trigger:hover { background: var(--bg2); }
+    .collapse-arrow { font-size: 12px; color: var(--text-dim); transition: transform 0.2s; }
+    .collapse-body {
+      display: none;
+      padding: 16px 18px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-top: none;
+      border-radius: 0 0 10px 10px;
+      margin-top: -10px;
+      margin-bottom: 8px;
+      font-size: 13px;
+      line-height: 1.8;
+      color: var(--text-dim);
+    }
+    .collapse-body.open { display: block; }
+    .collapse-trigger.open .collapse-arrow { transform: rotate(180deg); }
+    .collapse-body ul { padding-left: 18px; }
+    .collapse-body li { margin-bottom: 4px; }
+
+    /* PICKUP CARD */
+    .pickup-card {
+      background: var(--accent);
+      color: white;
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin: 24px 0;
+    }
+    .pickup-card-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 6px;
+    }
+    .pickup-card-title {
+      font-family: 'Fraunces', serif;
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .pickup-card-detail { font-size: 13px; color: rgba(255,255,255,0.75); }
+
+    /* FOOTER */
+    footer {
+      margin: 64px auto 0;
+      padding: 32px 0;
       border-top: 1px solid var(--border);
-      margin-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--text-dim);
     }
   </style>
 </head>
 <body>
 
-<!-- ═══ HERO ═══ -->
-<div class="hero">
-  <div class="hero-inner">
-    <div class="hero-eyebrow">SQ32 / SQ31 · SFO Layover · California, USA</div>
-    <h1>San Francisco</h1>
-    <p class="hero-sub">3.5 days · Kimpton Alton Hotel · Fisherman's Wharf</p>
-    <div class="hero-tags">
-      <span class="hero-tag">Arrive Tue 31 Mar ~14:00 PDT</span>
-      <span class="hero-tag">Depart Fri 3 Apr · SQ31 ~22:45</span>
-      <span class="hero-tag">Pickup 20:30 Fri</span>
-      <span class="hero-tag">GMT−7 (PDT)</span>
-      <span class="hero-tag">Kimpton Alton · 2700 Jones St</span>
-    </div>
-  </div>
-</div>
+  <!-- NAV -->
+  <nav class="nav">
+    <a class="nav-brand" href="#">San Francisco</a>
+    <span class="nav-meta">1 Apr – 2 Apr 2026</span>
+  </nav>
 
-<!-- ═══ NAV ═══ -->
-<nav class="nav">
-  <div class="nav-inner">
-    <a href="#day1">Day 1 — Tue</a>
-    <a href="#day2">Day 2 — Wed</a>
-    <a href="#day3">Day 3 — Thu</a>
-    <a href="#day4">Day 4 — Fri</a>
-    <a href="#tips">Tips</a>
-  </div>
-</nav>
-
-<!-- ═══ OVERVIEW STRIP ═══ -->
-<div class="overview">
-  <div class="overview-inner">
-    <span class="chip"><span class="chip-label">base</span> Kimpton Alton, 2700 Jones St 94133</span>
-    <span class="chip"><span class="chip-label">weather</span> 59–63°F · Layers + windproof jacket</span>
-    <span class="chip"><span class="chip-label">currency</span> USD · Card accepted everywhere</span>
-    <span class="chip"><span class="chip-label">tip</span> 20% restaurants · 15–20% Uber</span>
-    <span class="chip"><span class="chip-label">water</span> Tap is excellent (Hetch Hetchy)</span>
-    <span class="chip"><span class="chip-label">transport</span> Uber + Walk + F-line + Ferry</span>
-  </div>
-</div>
-
-<!-- ═══ MAIN ═══ -->
-<main class="main">
-
-  <!-- BOOKING ALERT -->
-  <div class="alert">
-    <span class="alert-icon">⚠️</span>
-    <div>
-      <strong>Book Alcatraz immediately</strong> — April 1 is pre-Easter week (high demand). Tickets available at <strong>cityexperiences.com/alcatraz</strong>. Day Tour: USD $47.95 adult. Target the <strong>08:40 AM ferry</strong> from Pier 33 (10 min walk from hotel). If sold out for morning, check daily for cancellations.
-    </div>
-  </div>
-
-  <!-- ══════════════════════════════════════ -->
-  <!-- DAY 1 — TUESDAY 31 MARCH              -->
-  <!-- ══════════════════════════════════════ -->
-  <section class="day-section" id="day1">
-    <div class="day-header">
-      <span class="day-label">Day 1</span>
-      <span class="day-title">Arrival · Fisherman's Wharf · North Beach</span>
-      <span class="day-meta">Tue 31 Mar · Arrive ~14:00 PDT</span>
-    </div>
-
-    <!-- AFTERNOON -->
-    <div class="time-block">
-      <div class="time-label">Afternoon · 14:00 – 17:00</div>
-
-      <div class="card">
-        <div class="card-head">
-          <span class="card-icon">🏨</span>
-          <span class="card-name">Check in · Kimpton Alton Hotel</span>
-          <span class="badge b-info">Base</span>
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">SQ32 · SFO Layover · Mar – Apr 2026 · Singapore Airlines Cabin Crew</div>
+      <h1 class="hero-title">San Fran<span>cisco</span></h1>
+      <p class="hero-sub">2 usable days · Kimpton Alton Hotel · Fisherman's Wharf</p>
+      <div class="flight-cards">
+        <div class="flight-card">
+          <div class="flight-card-label">Inbound</div>
+          <div class="flight-card-route">SIN → SFO</div>
+          <div class="flight-card-detail">SQ32 · Tuesday 31 Mar 2026</div>
+          <div class="flight-card-time">Arr 09:10 PDT · Terminal I</div>
         </div>
-        <p class="card-desc">Arrive from SFO via Uber or taxi (~$55–80, 25–35 min). Freshen up — the hotel has complimentary gym, pool, and bike rental. Free coffee/tea in lobby 07:00–10:00 daily. 2 bottles of mineral water in-room complimentary.</p>
-        <div class="card-pills">
-          <span class="pill">2700 Jones St · Tel 1-415-771-9000</span>
-          <span class="pill">SFO → hotel Uber: ~$55–80</span>
-          <span class="pill">Check-in from 15:00</span>
-          <span class="pill">Taxi reimbursed by SQ on receipt</span>
+        <div class="flight-card">
+          <div class="flight-card-label">Outbound</div>
+          <div class="flight-card-route">SFO → SIN</div>
+          <div class="flight-card-detail">SQ33 · Thursday 2 Apr 2026</div>
+          <div class="flight-card-time">Dep 21:30 PDT · Terminal I</div>
         </div>
       </div>
+    </div>
+  </header>
 
-      <div class="connector">Walk 8 min east along the waterfront path</div>
+  <!-- MAIN CONTENT -->
+  <div class="content">
 
-      <div class="card">
-        <div class="card-head">
-          <span class="card-icon">🦭</span>
-          <span class="card-name">Sea Lions at Pier 39 · K-Dock</span>
-          <span class="badge b-free">Free</span>
-        </div>
-        <p class="card-desc">Head to the west side of Pier 39 — you'll hear them before you see them. March–April is good season with dozens to hundreds of adult males hauled out on K-Dock. The Marine Mammal Center panels nearby explain their story. Late afternoon light is great for photos.</p>
-        <div class="card-pills">
-          <span class="pill">Pier 39 west side · K-Dock</span>
-          <span class="pill">15 min walk from hotel</span>
-          <span class="pill">Always accessible · Free</span>
-        </div>
-      </div>
-
-      <div class="connector">Walk 5 min west toward Pier 45</div>
-
-      <div class="card">
-        <div class="card-head">
-          <span class="card-icon">🎰</span>
-          <span class="card-name">Musée Mécanique · Pier 45</span>
-          <span class="badge b-free">Free entry</span>
-        </div>
-        <p class="card-desc">One of the world's largest collections of antique coin-operated arcade machines — 1920s fortune tellers, hand-cranked peep shows, player pianos, old-school pinball. Entry is completely free; bring $5–10 in quarters to actually play them. Genuinely weird and charming — not a tourist trap.</p>
-        <div class="card-pills">
-          <span class="pill">Pier 45, Shed A</span>
-          <span class="pill">Daily 10:00–20:00</span>
-          <span class="pill">Free entry · $0.25–$1 per game</span>
-          <span class="pill">Allow 45 min</span>
-        </div>
-      </div>
-
-      <div class="connector">Walk 5 min west</div>
-
-      <div class="card">
-        <div class="card-head">
-          <span class="card-icon">🏭</span>
-          <span class="card-name">Ghirardelli Square · Waterfront Walk</span>
-          <span class="badge b-free">Free to stroll</span>
-        </div>
-        <p class="card-desc">Beautiful restored 1893 brick chocolate factory, 3 blocks from the hotel. Worth walking through for the architecture. Optional: hot cocoa at the Ghirardelli Chocolate Experience (~$5–6) or skip it and just enjoy the bay view from the square. The full walk Ghirardelli→Pier 39 along the waterfront is one of the best urban promenades in the US.</p>
-        <div class="card-pills">
-          <span class="pill">900 North Point St</span>
-          <span class="pill">3 blocks west of hotel</span>
-          <span class="pill">Hot cocoa: ~$5–6 (optional)</span>
+    <!-- HOTEL -->
+    <div class="hotel-card">
+      <div class="hotel-icon">🏨</div>
+      <div>
+        <div class="hotel-name">Kimpton Alton Hotel</div>
+        <div class="hotel-address">2700 Jones Street, San Francisco CA 94133</div>
+        <div class="hotel-tags">
+          <span class="hotel-tag">Fisherman's Wharf</span>
+          <span class="hotel-tag">SQ32 / SQ30 Crew Hotel</span>
+          <span class="hotel-tag">+1 415-771-9000</span>
+          <span class="hotel-tag">10 min walk to Pier 33</span>
         </div>
       </div>
     </div>
 
-    <!-- EVENING -->
-    <div class="time-block">
-      <div class="time-label">Evening · 17:00 – 21:00</div>
-
-      <div class="connector">Walk 12–15 min southeast on Columbus Ave into North Beach</div>
-
-      <div class="card">
-        <div class="card-head">
-          <span class="card-icon">📚</span>
-          <span class="card-name">City Lights Bookstore</span>
-          <span class="badge b-free">Free to browse</span>
-        </div>
-        <p class="card-desc">Founded 1953. The epicentre of the Beat Generation literary scene — Lawrence Ferlinghetti's legendary independent bookstore. Three floors of eclectic, thoughtfully curated books; the basement is dedicated to poetry. A genuine cultural institution, not a tourist set-piece. Worth 20–30 minutes.</p>
-        <div class="card-pills">
-          <span class="pill">261 Columbus Ave</span>
-          <span class="pill">Daily 10:00–22:00</span>
-          <span class="pill">Free to browse</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-head">
-          <span class="card-icon">🥃</span>
-          <span class="card-name">Pre-dinner drink · Vesuvio Cafe</span>
-          <span class="badge b-pay">$10–15/drink</span>
-        </div>
-        <p class="card-desc">Directly across Jack Kerouac Alley from City Lights. A bohemian bar open since 1948 — where Kerouac famously stayed and drank instead of catching the bus to Big Sur. Two floors of Beat-era memorabilia and stained glass. Very real, not performative. Perfect atmosphere for a jet-lag-shaking cocktail.</p>
-        <div class="card-pills">
-          <span class="pill">255 Columbus Ave</span>
-          <span class="pill">Sun–Thu 11:00–01:00, Fri–Sat 11:00–02:00</span>
-          <span class="pill">Arrive ~17:00 for a quiet table</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-head">
-          <span class="card-icon">🦀</span>
-          <span class="card-name">Dinner · Sotto Mare Oysteria</span>
-          <span class="badge b-book">Arrive at opening</span>
-        </div>
-        <p class="card-desc">The definitive SF cioppino — a massive bowl of Dungeness crab, shrimp, mussels, clams, squid, and penne in tomato-wine broth. Order "The Best Damn Crab Cioppino" (~$55, easily feeds two). Arrive right at 17:00 when they open — waits build to 45–60 min within an hour. One of the best seafood restaurants in the entire city.</p>
-        <div class="card-pills">
-          <span class="pill">552 Green St, North Beach</span>
-          <span class="pill">Opens 17:00 daily</span>
-          <span class="pill pill-accent">Arrive at 17:00 sharp — no reservations for parties of 2</span>
-          <span class="pill">~$35–45/person</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════ -->
-  <!-- DAY 2 — WEDNESDAY 1 APRIL             -->
-  <!-- Alcatraz + Golden Gate Loop           -->
-  <!-- ══════════════════════════════════════ -->
-  <section class="day-section" id="day2">
-    <div class="day-header">
-      <span class="day-label">Day 2</span>
-      <span class="day-title">Alcatraz · Crissy Field · Battery Spencer · Palace of Fine Arts</span>
-      <span class="day-meta">Wed 1 Apr · Full day</span>
+    <!-- OVERVIEW CHIPS -->
+    <div class="overview-chips">
+      <span class="chip"><span class="chip-icon">📅</span> 2 touring days</span>
+      <span class="chip"><span class="chip-icon">🌤️</span> 12–17°C · layer up</span>
+      <span class="chip"><span class="chip-icon">💵</span> USD · cash for Chinatown</span>
+      <span class="chip"><span class="chip-icon">🚌</span> Muni day pass $24</span>
+      <span class="chip"><span class="chip-icon">⏰</span> PDT · UTC−7</span>
+      <span class="chip"><span class="chip-icon">🎟️</span> Book Alcatraz now</span>
     </div>
 
-    <div class="alert" style="margin-top: 0; margin-bottom: 1.25rem;">
-      <span class="alert-icon">🎫</span>
-      <div><strong>Alcatraz pre-booked?</strong> cityexperiences.com · $47.95 adult · Book 08:40 AM ferry. This loop runs hotel → Pier 33 → Alcatraz → Crissy Field → Fort Point → Battery Spencer (Marin) → Palace of Fine Arts → hotel. No backtracking.</div>
-    </div>
-
-    <!-- MORNING -->
-    <div class="time-block">
-      <div class="time-label">Morning · 07:30 – 12:00</div>
-
-      <div class="card">
-        <div class="card-head">
-          <span class="card-icon">☕</span>
-          <span class="card-name">Breakfast · The Buena Vista Cafe</span>
-          <span class="badge b-food">$12–18/person</span>
-        </div>
-        <p class="card-desc">An SF institution since 1916, literally steps from the hotel at the cable car turnaround. The place that introduced Irish Coffee to the United States in 1952. Classic American breakfast — eggs, bacon, pancakes. Fast service, no fuss. Perfect pre-Alcatraz fuel.</p>
-        <div class="card-pills">
-          <span class="pill">2765 Hyde St (steps from hotel)</span>
-          <span class="pill">Mon–Fri from 09:00 · Sat–Sun from 08:00</span>
-          <span class="pill">$12–18/person</span>
-        </div>
-      </div>
-
-      <div class="connector">Walk 10–12 min east along the Embarcadero to Pier 33 · Depart 08:10</div>
-
-      <div class="card">
-        <div class="card-head">
-          <span class="card-icon">⛴</span>
-          <span class="card-name">Ferry from Pier 33 · Depart 08:40</span>
-          <span class="badge b-info">Pre-booked</span>
-        </div>
-        <p class="card-desc">Arrive at Pier 33 by 08:10 — 30 min before departure. The first ferry is the best: dramatically quieter crowds and stunning morning light on the island. The 15-minute bay crossing with the city skyline and Bay Bridge behind you is a highlight in itself. Present your ticket at the gate.</p>
-        <div class="card-pills">
-          <span class="pill">Pier 33, Embarcadero</span>
-          <span class="pill">Departs 08:40 · 15 min crossing</span>
-          <span class="pill pill-accent">Arrive Pier 33 by 08:10</span>
-          <span class="pill">10–12 min walk from hotel</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-head">
-          <span class="card-icon">🏛</span>
-          <span class="card-name">Alcatraz Island · Cellhouse Audio Tour</span>
-          <span class="badge b-pay">$47.95 adult</span>
-        </div>
-        <p class="card-desc">Award-winning audio tour narrated by actual former prisoners and guards who lived here. Walk Al Capone's cell (AZ-85), the 1962 Frank Morris escape route, solitary confinement in D-Block (Stop 16 — don't rush it), and the dining hall. After the tour, climb to the recreation yard for the best 360° view on the island: SF skyline, Bay Bridge, Golden Gate, Marin. Walk the island perimeter trail for views most visitors never see. <strong>Bring a jacket</strong> — the island runs 10–15°F colder than the city.</p>
-        <div class="card-pills">
-          <span class="pill">Total time on island: 2.5–3.5 hrs</span>
-          <span class="pill">Audio tour included · 11 languages</span>
-          <span class="pill pill-accent">Jacket essential — it's cold and windy</span>
-          <span class="pill">Return ferry: aim for ~11:30 back at Pier 33</span>
-        </div>
+    <!-- ARRIVAL DAY -->
+    <div class="arrival-box">
+      <div class="arrival-box-label">Tue 31 Mar · Arrival Day — Rest</div>
+      <div class="arrival-box-title">Land 09:10 AM → Hotel by ~11:00 → Sleep</div>
+      <div class="arrival-box-desc">
+        After a 15-hour flight, your body clock reads 00:10 SGT. Customs + baggage at SFO Terminal I typically adds 60–90 minutes. Crew transport drops you at the Kimpton Alton around 11:00 AM. <strong>Today is a mandatory rest day — sleep, eat something light, and reset.</strong> The neighbourhood is safe to explore gently if you feel up to it — Ghirardelli Square and the Wharf are right there.
       </div>
     </div>
 
-    <!-- AFTERNOON — GOLDEN GATE LOOP -->
-    <div class="time-block">
-      <div class="time-label">Afternoon · 12:00 – 17:30 — The Golden Gate Loop (no backtracking)</div>
+    <!-- ── DAY 1 ── -->
+    <div class="section">
+      <div class="section-label">Wednesday · 1 April 2026</div>
+      <h2 class="section-title">
+        <span class="section-icon">1</span>
+        Alcatraz, Golden Gate &amp; the Waterfront
+      </h2>
 
-      <div class="connector">Uber from Pier 33 to Crissy Field · ~$17, 6 min</div>
-
-      <div class="card">
-        <div class="card-head">
-          <span class="card-icon">🥪</span>
-          <span class="card-name">Lunch · The Warming Hut · Crissy Field</span>
-          <span class="badge b-food">$8–14/person</span>
-        </div>
-        <p class="card-desc">Eat with the Golden Gate Bridge framed directly in front of you. Equator coffee, soups, sandwiches, and baked goods from local Bay Area makers. Sit outside on the picnic tables. This view is free and extraordinary.</p>
-        <div class="card-pills">
-          <span class="pill">983 Marine Dr (west end of Crissy Field)</span>
-          <span class="pill">Mon–Thu 09:00–17:00</span>
-          <span class="pill">$8–14/person</span>
-        </div>
+      <div class="note-red">
+        <strong>Book before you land:</strong> Alcatraz ferry tickets sell out weeks ahead — reserve now at cityexperiences.com. Aim for the <strong>09:00 or 10:20 AM departure</strong> from Pier 33. Cost: <strong>US$47.95</strong> includes the ferry and audio tour.
       </div>
 
-      <div class="card">
-        <div class="card-head">
-          <span class="card-icon">🌊</span>
-          <span class="card-name">Crissy Field Promenade → Fort Point</span>
-          <span class="badge b-free">Free</span>
+      <div class="day-divider"><span class="day-divider-label">Morning</span></div>
+      <div class="timeline">
+
+        <div class="stop">
+          <div class="stop-dot accent"><div class="stop-dot-inner"></div></div>
+          <div class="stop-content">
+            <div class="stop-time">08:15 – 09:00</div>
+            <div class="stop-name">Breakfast at The Buena Vista</div>
+            <div class="stop-desc">SF institution since 1916 — famous for its Irish coffees and proper diner breakfast. Steps from the hotel, with windows looking out over Ghirardelli Square and the bay.</div>
+            <div class="stop-meta">2765 Hyde St · Open from 08:00 · ~US$15–20pp</div>
+            <div class="stop-tags"><span class="stop-tag">10 min walk</span><span class="stop-tag teal">Local institution</span></div>
+          </div>
         </div>
-        <p class="card-desc">Walk the 1.75-mile Golden Gate Promenade westward from the Warming Hut. Restored tidal marsh and beach with the bridge growing larger with every step. At the end, walk under the Fort Point arch and look <em>straight up</em> at the bridge from directly below — a view available nowhere else. Fort Point interior is closed on Wednesdays, but the exterior and the arch itself are the main draw.</p>
-        <div class="card-pills">
-          <span class="pill">Golden Gate Promenade · 1.75 miles · ~35 min</span>
-          <span class="pill">Fort Point: 201 Marine Dr · Exterior always open</span>
-          <span class="pill">Interior closed Wed · Exterior is the best bit anyway</span>
+
+        <div class="stop">
+          <div class="stop-dot accent"><div class="stop-dot-inner"></div></div>
+          <div class="stop-content">
+            <div class="stop-time">09:15 – 12:30</div>
+            <div class="stop-name">Alcatraz Island</div>
+            <div class="stop-desc">One of the world's most iconic prisons — the Cellhouse Audio Tour narrated by former guards and inmates is genuinely gripping. Allow 2.5 hours on the island. Ferry departs from Pier 33, a 10-minute walk from your hotel.</div>
+            <div class="stop-meta">Pier 33 · US$47.95 · cityexperiences.com · 09:00 or 10:20 departure for Wed 1 Apr</div>
+            <div class="stop-tags">
+              <span class="stop-tag red">Book ahead — sells out</span>
+              <span class="stop-tag">10 min walk to pier</span>
+              <span class="stop-tag">Audio tour included</span>
+            </div>
+          </div>
         </div>
+
       </div>
 
-      <div class="connector">Uber across the Golden Gate to the Marin side · ~$12–15, 8 min · Best photo of the trip</div>
+      <div class="day-divider"><span class="day-divider-label">Afternoon</span></div>
+      <div class="timeline">
 
-      <div class="card">
-        <div class="card-head">
-          <span class="card-icon">📸</span>
-          <span class="card-name">Battery Spencer · Best Golden Gate Viewpoint</span>
-          <span class="badge b-free">Free</span>
+        <div class="stop">
+          <div class="stop-dot teal"><div class="stop-dot-inner"></div></div>
+          <div class="stop-content">
+            <div class="stop-time">13:00 – 13:45</div>
+            <div class="stop-name">Lunch — sourdough chowder bowl at Boudin</div>
+            <div class="stop-desc">Back from Alcatraz, grab a Dungeness crab roll or clam chowder in a sourdough bread bowl. Boudin has been baking since 1849 — a genuine SF institution. Or grab food from Pier 39 and watch the sea lions on K-dock while you eat.</div>
+            <div class="stop-meta">Boudin Bakery, 160 Jefferson St · US$14–20 · No booking needed</div>
+            <div class="stop-tags"><span class="stop-tag teal">SF classic</span><span class="stop-tag">Sea lions at Pier 39 nearby</span></div>
+          </div>
         </div>
-        <p class="card-desc">Universally agreed to be the single best vantage for Golden Gate Bridge photography. You look directly down onto the north tower with the entire SF skyline behind it — the classic postcard shot. A short 0.25-mile trail from Conzelman Rd. It is windy and fully exposed — layers needed. Have Uber drop you at the Conzelman Rd parking lot.</p>
-        <div class="card-pills">
-          <span class="pill">Conzelman Rd, Marin Headlands</span>
-          <span class="pill">Always open · Free</span>
-          <span class="pill">Uber across bridge: ~$12–15</span>
-          <span class="pill">Spend 20–30 min</span>
-          <span class="pill pill-accent">Wind-exposed — bring your jacket</span>
+
+        <div class="stop">
+          <div class="stop-dot navy"><div class="stop-dot-inner"></div></div>
+          <div class="stop-content">
+            <div class="stop-time">14:00 – 15:00</div>
+            <div class="stop-name">Crissy Field &amp; the Presidio</div>
+            <div class="stop-desc">Take the 30 bus (or a quick Lyft) west to Crissy Field — a restored wetlands park along the bay with unobstructed views of the Golden Gate Bridge dead ahead. This is the SF approach to the bridge.</div>
+            <div class="stop-meta">Bus 30 from Fisherman's Wharf · ~20 min · Free · Muni pass valid</div>
+            <div class="stop-tags"><span class="stop-tag navy">Bridge views</span><span class="stop-tag">Easy flat walk</span></div>
+          </div>
         </div>
+
+        <div class="stop">
+          <div class="stop-dot accent"><div class="stop-dot-inner"></div></div>
+          <div class="stop-content">
+            <div class="stop-time">15:00 – 16:20</div>
+            <div class="stop-name">Walk the Golden Gate Bridge</div>
+            <div class="stop-desc">Use the east pedestrian sidewalk (free, open daily 05:00–21:00). The full crossing is 1.7 miles each way — most people walk to mid-span for the full bay panorama and turn back, roughly 30–45 minutes round trip. Wind can be brutal; the layer you packed earns its keep here.</div>
+            <div class="stop-meta">Free · East sidewalk only for pedestrians · Entry at Welcome Center plaza</div>
+            <div class="stop-tags">
+              <span class="stop-tag red">SF icon</span>
+              <span class="stop-tag">Wind jacket essential</span>
+              <span class="stop-tag">Mid-span views are enough</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-dot"><div class="stop-dot-inner"></div></div>
+          <div class="stop-content">
+            <div class="stop-time">16:30 – 17:00</div>
+            <div class="stop-name">Back to Fisherman's Wharf</div>
+            <div class="stop-desc">Walk back to the SF bridge plaza, then catch the 28 or 30 bus toward the Wharf — or a Lyft. Clean arc for the day: Hotel → Pier 33 → Boudin → Crissy Field → Golden Gate → back to hotel. No backtracking.</div>
+            <div class="stop-meta">Bus 28/30 → ~20 min · or Lyft ~US$12–15</div>
+          </div>
+        </div>
+
       </div>
 
-      <div class="connector">Uber to Palace of Fine Arts · ~$12, 8 min</div>
+      <div class="day-divider"><span class="day-divider-label">Evening</span></div>
+      <div class="timeline">
 
-      <div class="card">
-        <div class="card-head">
-          <span class="card-icon">🏛</span>
-          <span class="card-name">Palace of Fine Arts · Marina</span>
-          <span class="badge b-free">Free</span>
+        <div class="stop">
+          <div class="stop-dot gold"><div class="stop-dot-inner"></div></div>
+          <div class="stop-content">
+            <div class="stop-time">17:30 – 18:30</div>
+            <div class="stop-name">Ghirardelli Square at golden hour</div>
+            <div class="stop-desc">A 5-minute walk from your hotel, this converted chocolate factory has open plazas with bay views. The original Ghirardelli hot fudge sundae is worth trying — it's not just tourist fare.</div>
+            <div class="stop-meta">900 North Point St · Free to visit · Sundae ~US$10</div>
+            <div class="stop-tags"><span class="stop-tag gold">5 min from hotel</span><span class="stop-tag">Best at sunset</span></div>
+          </div>
         </div>
-        <p class="card-desc">A stunning Greek-Roman rotunda with a reflecting lagoon, resident ducks and swans. One of SF's most photogenic spots — golden in late afternoon light. Grounds open 05:00–midnight. A peaceful 30–40 minute stroll before heading back.</p>
-        <div class="card-pills">
-          <span class="pill">3601 Lyon St, Marina District</span>
-          <span class="pill">Always open · Free</span>
-          <span class="pill">30–40 min</span>
+
+        <div class="stop">
+          <div class="stop-dot accent"><div class="stop-dot-inner"></div></div>
+          <div class="stop-content">
+            <div class="stop-time">19:30</div>
+            <div class="stop-name">Dinner — Fog Harbor Fish House</div>
+            <div class="stop-desc">Right on Pier 39 with panoramic bay views. The SF cioppino (the city's signature tomato-based seafood stew) is the move. Touristy location but legitimately good seafood.</div>
+            <div class="stop-meta">Pier 39 · Mains US$28–45 · Book via OpenTable</div>
+            <div class="stop-tags"><span class="stop-tag red">Book ahead</span><span class="stop-tag navy">Bay views</span></div>
+          </div>
         </div>
-      </div>
 
-      <div class="connector">Uber back to hotel · ~$12, 10 min</div>
-    </div>
-
-    <!-- EVENING -->
-    <div class="time-block">
-      <div class="time-label">Evening · 18:00 – late</div>
-
-      <div class="card">
-        <div class="card-head">
-          <span class="card-icon">🍕</span>
-          <span class="card-name">Dinner · Tony's Pizza Napoletana</span>
-          <span class="badge b-pay">$18–28/pizza</span>
-        </div>
-        <p class="card-desc">Multi-time World Pizza Champion Tony Gemignani. Seven different ovens for seven styles — Neapolitan, Sicilian, Detroit, New York, Roman, and more. The coal-fired Margherita is exceptional. Open Wed–Sun from 17:00 (you're good). Arrive early — lines build fast even on weekdays.</p>
-        <div class="card-pills">
-          <span class="pill">1570 Stockton St, North Beach</span>
-          <span class="pill">Wed–Sun from 17:00</span>
-          <span class="pill">$18–28/pizza · Walk-in</span>
-          <span class="pill">~15 min walk from hotel</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════ -->
-  <!-- DAY 3 — THURSDAY 2 APRIL              -->
-  <!-- Ferry Bldg → Chinatown → Union Sq    -->
-  <!-- → Haight → Painted Ladies            -->
-  <!-- ══════════════════════════════════════ -->
-  <section class="day-section" id="day3">
-    <div class="day-header">
-      <span class="day-label">Day 3</span>
-      <span class="day-title">Ferry Building · Chinatown · Union Square · Haight · Painted Ladies</span>
-      <span class="day-meta">Thu 2 Apr · Full day · Route runs east→west, no backtracking</span>
-    </div>
-
-    <!-- MORNING -->
-    <div class="time-block">
-      <div class="time-label">Morning · 08:30 – 10:30</div>
-
-      <div class="card">
-        <div class="card-head">
-          <span class="card-icon">☕</span>
-          <span class="card-name">Breakfast · Cafe de Casa</span>
-          <span class="badge b-food">Under $15</span>
-        </div>
-        <p class="card-desc">Brazilian-influenced specialty coffee shop 3 minutes from the hotel. Single-origin espresso, micro-lot beans, seasonal baked goods. One of the few genuinely excellent third-wave coffee spots in the Fisherman's Wharf tourist zone.</p>
-        <div class="card-pills">
-          <span class="pill">2701 Leavenworth St (corner Leavenworth & North Point)</span>
-          <span class="pill">~3 min walk from hotel</span>
-        </div>
-      </div>
-
-      <div class="connector">F-line streetcar from Taylor/Bay stop → Ferry Building · ~15 min · $3.00 (tap card or exact cash)</div>
-
-      <div class="card">
-        <div class="card-head">
-          <span class="card-icon">🏪</span>
-          <span class="card-name">Ferry Building Marketplace · Thursday Market</span>
-          <span class="badge b-free">Free to browse</span>
-        </div>
-        <p class="card-desc">The Thursday outdoor farmers market runs 10:00–14:00 — perfect timing. Inside the 1898 Beaux-Arts terminal: Acme Bread (SF's best sourdough), Cowgirl Creamery (taste the Mt Tam triple cream — it's extraordinary), Blue Bottle Coffee (the original kiosk that launched the third-wave movement), Humphry Slocombe ice cream (try Secret Breakfast: bourbon + cornflake). Outside stalls: spring produce, oysters on the half shell, tamales, pastries.</p>
-        <div class="card-pills">
-          <span class="pill">1 Ferry Building, Embarcadero</span>
-          <span class="pill">Thu outdoor market: 10:00–14:00</span>
-          <span class="pill">F-line drops off right outside</span>
-          <span class="pill">Spend 1–1.5 hrs</span>
-        </div>
       </div>
     </div>
 
-    <!-- CHINATOWN + LUNCH -->
-    <div class="time-block">
-      <div class="time-label">Late Morning to Lunch · 10:30 – 13:30</div>
+    <!-- ── DAY 2 ── -->
+    <div class="section">
+      <div class="section-label">Thursday · 2 April 2026</div>
+      <h2 class="section-title">
+        <span class="section-icon">2</span>
+        Ferry Building, Chinatown &amp; North Beach
+      </h2>
 
-      <div class="connector">Walk 20 min up Washington or Clay St, or short Uber ~$10</div>
-
-      <div class="card">
-        <div class="card-head">
-          <span class="card-icon">🏮</span>
-          <span class="card-name">Chinatown · Ross Alley · Stockton · Waverly Place</span>
-          <span class="badge b-free">Free to explore</span>
-        </div>
-        <p class="card-desc">Enter at the ceremonial Dragon Gate (Bush & Grant Ave). Walk Grant for atmosphere — red lanterns, souvenir shops. Then move to <strong>Stockton Street</strong> one block west for the real thing: whole roasted ducks in windows, live seafood on ice on the sidewalk, produce piled high. The Broadway–Sacramento stretch is most intense. Find <strong>Ross Alley</strong> for the Golden Gate Fortune Cookie Factory (free to watch, warm fresh bag ~$4–6 cash). Duck into <strong>Waverly Place</strong> for the painted temple balconies and Tin How Temple (free, donations appreciated).</p>
-        <div class="card-pills">
-          <span class="pill">Enter at Bush & Grant Ave (Dragon Gate)</span>
-          <span class="pill">Ross Alley: 56 Ross Alley · Fortune Cookie Factory</span>
-          <span class="pill">Waverly Place: painted balconies</span>
-          <span class="pill">Tin How Temple: 125 Waverly Pl, 4th floor · Free</span>
-          <span class="pill">Allow 1–1.5 hrs</span>
-        </div>
+      <div class="pickup-card">
+        <div class="pickup-card-label">Crew Transport — Today</div>
+        <div class="pickup-card-title">Kotobuki-Ya CPS pickup at 19:15 PDT</div>
+        <div class="pickup-card-detail">Call +1 650-344-7955 to confirm · Be in the hotel lobby by 19:10 · SQ33 departs 21:30 PDT from Terminal I</div>
       </div>
 
-      <div class="card">
-        <div class="card-head">
-          <span class="card-icon">🥟</span>
-          <span class="card-name">Dim Sum · City View Restaurant</span>
-          <span class="badge b-food">$20–35/person</span>
-        </div>
-        <p class="card-desc">One of SF's most consistently praised dim sum restaurants — cart service, not an order form. Arrive at 11:00–11:30 to get seated quickly on a Thursday. Get the har gow, siu mai, egg tarts, and whatever the cart lady is most enthusiastic about. It's a communal, chaotic, joyful lunch.</p>
-        <div class="card-pills">
-          <span class="pill">662 Commercial St (edge of Chinatown)</span>
-          <span class="pill">Mon–Fri 11:00–14:30</span>
-          <span class="pill">$20–35/person</span>
-          <span class="pill">Arrive 11:00–11:30 to avoid wait</span>
-        </div>
+      <div class="tip">
+        <strong>Today's route is a loop:</strong> Hotel → Ferry Building (Embarcadero, south) → Chinatown → North Beach → Coit Tower → Filbert Steps → Fisherman's Wharf → Hotel. No backtracking — you end up back at the hotel with time to spare before the 19:15 pickup.
       </div>
 
-      <div class="card">
-        <div class="card-head">
-          <span class="card-icon">🧁</span>
-          <span class="card-name">Golden Gate Bakery · Egg Custard Tarts</span>
-          <span class="badge b-pay">~$4/tart</span>
-        </div>
-        <p class="card-desc">A legendary SF institution. Warm, flaky, silky-custardy perfection. There's often a line — worth it. Grab a few before or after dim sum as dessert. <strong>Cash only.</strong> Opens ~10:00, closes when sold out.</p>
-        <div class="card-pills">
-          <span class="pill">1029 Grant Ave</span>
-          <span class="pill pill-accent">Cash only</span>
-          <span class="pill">May sell out — go earlier rather than later</span>
-        </div>
-      </div>
-    </div>
+      <div class="day-divider"><span class="day-divider-label">Morning</span></div>
+      <div class="timeline">
 
-    <!-- UNION SQUARE + HAIGHT -->
-    <div class="time-block">
-      <div class="time-label">Afternoon · 13:30 – 18:00</div>
-
-      <div class="connector">Walk 10–15 min west to Union Square (flat, pleasant through FiDi)</div>
-
-      <div class="card">
-        <div class="card-head">
-          <span class="card-icon">🛍</span>
-          <span class="card-name">Union Square · Shopping</span>
-          <span class="badge b-free">Free to browse</span>
+        <div class="stop">
+          <div class="stop-dot gold"><div class="stop-dot-inner"></div></div>
+          <div class="stop-content">
+            <div class="stop-time">07:45 – 09:30</div>
+            <div class="stop-name">Ferry Building Farmers Market</div>
+            <div class="stop-desc">One of the best farmers markets in the US — and Thursday is a market day (08:00–14:00). Artisan sourdough from Acme Bread, fresh oysters, California cheese, Blue Bottle Coffee. The 1898 beaux-arts building is worth seeing on its own.</div>
+            <div class="stop-meta">1 Ferry Building · Open Thu 08:00–14:00 · Free · F-Market streetcar or Lyft ~US$12 from hotel</div>
+            <div class="stop-tags">
+              <span class="stop-tag gold">Thu market day</span>
+              <span class="stop-tag teal">Don't miss</span>
+              <span class="stop-tag">2.3 miles from hotel</span>
+            </div>
+          </div>
         </div>
-        <p class="card-desc">SF's luxury retail hub. Nordstrom, Neiman Marcus (the SF flagship has a famous glass-domed rotunda — worth looking up), Saks Fifth Avenue, plus Gucci, LV, Burberry within 2–3 blocks. Detour to <strong>Maiden Lane</strong> — a pretty pedestrian alley off the square with an actual Frank Lloyd Wright building at #140 (now a gallery). <strong>Gump's</strong> (135 Post St) has sold SF luxury gifts since 1861, including Asian art and jade — genuinely unique to SF.</p>
-        <div class="card-pills">
-          <span class="pill">Geary & Powell anchor intersection</span>
-          <span class="pill">1–2 hrs browsing</span>
-          <span class="pill">140 Maiden Lane: Frank Lloyd Wright building · Free to enter</span>
-          <span class="pill">Gump's: 135 Post St · Est. 1861</span>
+
+        <div class="stop">
+          <div class="stop-dot"><div class="stop-dot-inner"></div></div>
+          <div class="stop-content">
+            <div class="stop-time">09:30 – 10:00</div>
+            <div class="stop-name">Walk north along the Embarcadero</div>
+            <div class="stop-desc">Head north from the Ferry Building along the flat waterfront promenade — Bay Bridge views, historic piers, bollard lights. A 20-minute stroll toward Chinatown direction.</div>
+            <div class="stop-meta">Free · Flat waterfront walk · ~1 mile toward Chinatown</div>
+          </div>
         </div>
+
       </div>
 
-      <div class="connector">Uber to Haight-Ashbury · ~$14–18, 15 min · DO NOT walk — route passes through the Tenderloin</div>
+      <div class="day-divider"><span class="day-divider-label">Mid-morning</span></div>
+      <div class="timeline">
 
-      <div class="card">
-        <div class="card-head">
-          <span class="card-icon">🎵</span>
-          <span class="card-name">Haight-Ashbury · Amoeba Music + Vintage Shops</span>
-          <span class="badge b-free">Free to browse</span>
+        <div class="stop">
+          <div class="stop-dot accent"><div class="stop-dot-inner"></div></div>
+          <div class="stop-content">
+            <div class="stop-time">10:00 – 11:30</div>
+            <div class="stop-name">Chinatown — Grant Avenue &amp; the Alleys</div>
+            <div class="stop-desc">The oldest Chinatown in North America (1848). Walk Grant Avenue for the main drag, then duck into the alleys: Ross Alley has the Golden Gate Fortune Cookie Factory where you can watch them being folded by hand (free to watch, buy a bag for $1). Also worth seeing: Waverly Place "Temple Street" for the painted balconies.</div>
+            <div class="stop-meta">Grant Ave at Bush St · Free to explore · Golden Gate Cookie Factory: 56 Ross Alley</div>
+            <div class="stop-tags">
+              <span class="stop-tag red">SF icon</span>
+              <span class="stop-tag">Cash useful</span>
+              <span class="stop-tag">15 min walk from Embarcadero</span>
+            </div>
+          </div>
         </div>
-        <p class="card-desc"><strong>Amoeba Music</strong> (1855 Haight) — one of the last great independent record megastores in America. Massive vinyl and CD selection. Worth 20–30 min even if you don't buy anything. <strong>Held Over</strong> (1543 Haight) — the best vintage clothing on the strip: well-curated actual vintage, strong 60s–80s pieces. <strong>Wasteland</strong> (1660 Haight) — larger, good for denim and leather. The neighbourhood retains real character — not a performance of 1967.</p>
-        <div class="card-pills">
-          <span class="pill">Haight St between Masonic & Stanyan</span>
-          <span class="pill">1.5–2 hrs</span>
-          <span class="pill">Amoeba: free to browse · Just look at the vinyl</span>
+
+        <div class="stop">
+          <div class="stop-dot teal"><div class="stop-dot-inner"></div></div>
+          <div class="stop-content">
+            <div class="stop-time">11:30 – 12:30</div>
+            <div class="stop-name">Dim Sum lunch in Chinatown</div>
+            <div class="stop-desc">Good Mong Kok Bakery is legendary — steamed buns and dumplings to-go, queue out the door and worth every minute (~US$3–5 per item). For sit-down service, City View Restaurant has proper trolley dim sum. Both within 2 minutes of Grant Ave.</div>
+            <div class="stop-meta">Good Mong Kok: 1039 Stockton St · City View: 662 Commercial St · US$15–30pp</div>
+            <div class="stop-tags"><span class="stop-tag teal">Highly rated locally</span><span class="stop-tag">Arrive before 12:30 for full selection</span></div>
+          </div>
         </div>
+
       </div>
 
-      <div class="connector">Walk 15–20 min east on Haight then north on Steiner · or Uber 5 min (~$8)</div>
+      <div class="day-divider"><span class="day-divider-label">Afternoon</span></div>
+      <div class="timeline">
 
-      <div class="card">
-        <div class="card-head">
-          <span class="card-icon">🏡</span>
-          <span class="card-name">Alamo Square · The Painted Ladies</span>
-          <span class="badge b-free">Free</span>
+        <div class="stop">
+          <div class="stop-dot navy"><div class="stop-dot-inner"></div></div>
+          <div class="stop-content">
+            <div class="stop-time">12:30 – 13:30</div>
+            <div class="stop-name">North Beach — Columbus Avenue</div>
+            <div class="stop-desc">Walk 10 minutes north from Chinatown into SF's Italian-American neighbourhood. Stop at Caffe Trieste (601 Vallejo St) — SF's oldest coffee house, 1956, where Coppola drafted The Godfather. City Lights Bookstore (261 Columbus), the legendary Beat Generation independent bookshop, is right next door.</div>
+            <div class="stop-meta">Columbus Ave · Free to explore · Caffe Trieste: 601 Vallejo St</div>
+            <div class="stop-tags"><span class="stop-tag navy">Beat Generation history</span><span class="stop-tag">10 min walk from Chinatown</span></div>
+          </div>
         </div>
-        <p class="card-desc">The six Victorian "Painted Ladies" on the 700 block of Steiner St (between Grove and Hayes) with the SF skyline behind them. <strong>Best photo spot:</strong> stand on the east-facing lawn of Alamo Square Park, looking toward Steiner — Victorians in foreground, downtown towers behind. Afternoon golden hour (17:00–17:30) hits the west-facing facades beautifully. Thursday means far fewer tourists than weekends.</p>
-        <div class="card-pills">
-          <span class="pill">710–720 Steiner St at Hayes</span>
-          <span class="pill">Alamo Square Park · Always open · Free</span>
-          <span class="pill pill-accent">Best light: 16:30–17:30</span>
-          <span class="pill">Allow 45–60 min</span>
+
+        <div class="stop">
+          <div class="stop-dot accent"><div class="stop-dot-inner"></div></div>
+          <div class="stop-content">
+            <div class="stop-time">13:30 – 14:45</div>
+            <div class="stop-name">Coit Tower &amp; the Filbert Steps</div>
+            <div class="stop-desc">A 64-metre art deco tower atop Telegraph Hill with 360° views of the city and bay. The lobby murals (1934, WPA-era) are free to view. Elevator to the top: US$13. The approach via the Filbert Steps — a hidden stairway through private gardens and feral cherry-headed conure parrots that have lived here since the 1990s — is half the experience.</div>
+            <div class="stop-meta">1 Telegraph Hill Blvd · Elevator US$13 · Open 10:00–18:00 · 10 min walk from North Beach</div>
+            <div class="stop-tags">
+              <span class="stop-tag red">360° bay views</span>
+              <span class="stop-tag">Wild parrots on the steps</span>
+              <span class="stop-tag">US$13 elevator</span>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
 
-    <!-- EVENING -->
-    <div class="time-block">
-      <div class="time-label">Evening · 18:30 – late</div>
-
-      <div class="connector">Uber back to North Beach · ~$18–22, 15 min</div>
-
-      <div class="card">
-        <div class="card-head">
-          <span class="card-icon">🍝</span>
-          <span class="card-name">Dinner · Scoma's · Pier 47</span>
-          <span class="badge b-book">Reservations recommended</span>
+        <div class="stop">
+          <div class="stop-dot"><div class="stop-dot-inner"></div></div>
+          <div class="stop-content">
+            <div class="stop-time">14:45 – 15:30</div>
+            <div class="stop-name">Descend to the Embarcadero &amp; walk back</div>
+            <div class="stop-desc">Take the Filbert Steps down the north face of Telegraph Hill to the waterfront, then walk west along the Embarcadero back to Pier 39 and your hotel — flat, scenic, 35 minutes. The loop is complete. Say goodbye to the sea lions.</div>
+            <div class="stop-meta">Free · ~35 min flat walk · Closes the circular route back to hotel</div>
+            <div class="stop-tags"><span class="stop-tag">Completes the loop</span><span class="stop-tag">Sea lions at Pier 39</span></div>
+          </div>
         </div>
-        <p class="card-desc">A Fisherman's Wharf institution since 1965 — the real deal for SF seafood. Whole Dungeness crab, cioppino (the SF-style tomato-seafood stew), fresh grilled fish, sourdough bread. Classic old-school dining room with views of the working fishing fleet. Call ahead: 415-771-4383 or book online. Alternatively: <strong>Trattoria Contadina</strong> (1800 Mason St, North Beach) for excellent house-made pasta in a warm neighbourhood room (~$22–38/person).</p>
-        <div class="card-pills">
-          <span class="pill">Pier 47, 1 Al Scoma Way (waterfront)</span>
-          <span class="pill">~$40–65/person · Seafood focus</span>
-          <span class="pill">Reserve: 415-771-4383</span>
-          <span class="pill">Alt: Trattoria Contadina · 1800 Mason St</span>
+
+        <div class="stop">
+          <div class="stop-dot gold"><div class="stop-dot-inner"></div></div>
+          <div class="stop-content">
+            <div class="stop-time">15:30 – 17:00</div>
+            <div class="stop-name">Hotel — rest, repack, decompress</div>
+            <div class="stop-desc">Back at the Kimpton Alton with over 2 hours before pickup. Shower, pack bags, grab a coffee nearby. No rushing — you've got comfortable buffer time.</div>
+            <div class="stop-meta">Hotel: 2700 Jones St · Confirm late checkout with front desk if needed</div>
+            <div class="stop-tags"><span class="stop-tag gold">Buffer time</span></div>
+          </div>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- ══════════════════════════════════════ -->
-  <!-- DAY 4 — FRIDAY 3 APRIL                -->
-  <!-- Coit Tower + Sausalito + Departure   -->
-  <!-- ══════════════════════════════════════ -->
-  <section class="day-section" id="day4">
-    <div class="day-header">
-      <span class="day-label">Day 4</span>
-      <span class="day-title">Coit Tower · Sausalito by Ferry · Departure</span>
-      <span class="day-meta">Fri 3 Apr · Pickup 20:30 · SQ31 ~22:45</span>
-    </div>
-
-    <div class="alert" style="margin-top: 0; margin-bottom: 1.25rem;">
-      <span class="alert-icon">⏰</span>
-      <div><strong>Hard deadline: back at hotel by 19:30.</strong> Crew transport pickup <strong>20:30</strong>. Drop-off at SFO International Terminal Courtyard G. SQ31 STD ~22:45 PDT.</div>
-    </div>
-
-    <!-- MORNING -->
-    <div class="time-block">
-      <div class="time-label">Morning · 08:30 – 11:30</div>
-
-      <div class="card">
-        <div class="card-head">
-          <span class="card-icon">☕</span>
-          <span class="card-name">Breakfast · The Buena Vista or Cafe de Casa</span>
-          <span class="badge b-food">$10–18</span>
-        </div>
-        <p class="card-desc">Relaxed final morning — no rush. <strong>Cafe de Casa</strong> (2701 Leavenworth, 3 min walk) for the best specialty coffee. <strong>Buena Vista</strong> (2765 Hyde, 5 min walk) for the full Irish Coffee + American breakfast farewell experience. Both walkable, both excellent.</p>
-        <div class="card-pills">
-          <span class="pill">Cafe de Casa: 2701 Leavenworth · specialty coffee</span>
-          <span class="pill">Buena Vista: 2765 Hyde · classic SF institution</span>
-        </div>
       </div>
 
-      <div class="connector">Walk 25–30 min through North Beach to Telegraph Hill · or MUNI #39 from Fisherman's Wharf ~$2.50, 10 min</div>
+      <div class="day-divider"><span class="day-divider-label">Departure</span></div>
+      <div class="timeline">
 
-      <div class="card">
-        <div class="card-head">
-          <span class="card-icon">🦜</span>
-          <span class="card-name">Filbert Steps · Wild Parrots of Telegraph Hill</span>
-          <span class="badge b-free">Free</span>
+        <div class="stop">
+          <div class="stop-dot accent"><div class="stop-dot-inner"></div></div>
+          <div class="stop-content">
+            <div class="stop-time">17:30 – 18:30</div>
+            <div class="stop-name">Last meal — simple and close</div>
+            <div class="stop-desc">Scoma's at Pier 47 (fresh seafood institution since 1965 — the cioppino if you missed it Day 1). Or In-N-Out Burger at 333 Jefferson St for a proper California send-off. Both under 10 minutes from the hotel.</div>
+            <div class="stop-meta">Scoma's: Al Scoma Way, Pier 47 · In-N-Out: 333 Jefferson St · Both 5–10 min walk</div>
+          </div>
         </div>
-        <p class="card-desc">The famous flock of cherry-headed conures — wild parrots descended from escaped pets, now a beloved SF fixture. Most reliably seen in the trees along the Filbert Steps (especially the ficus, cherry, and loquat trees). You'll hear them first: loud tropical squawking unlike anything else in SF. Mid-morning 09:00–11:00 is the best window. The steps are steep, beautiful, and lined with private cottage gardens.</p>
-        <div class="card-pills">
-          <span class="pill">Filbert Steps, Telegraph Hill</span>
-          <span class="pill">Best: 09:00–11:00</span>
-          <span class="pill">You'll hear them before you see them</span>
-        </div>
-      </div>
 
-      <div class="card">
-        <div class="card-head">
-          <span class="card-icon">🗼</span>
-          <span class="card-name">Coit Tower · Murals + Observation Deck</span>
-          <span class="badge b-pay">$10 adult (deck)</span>
+        <div class="stop">
+          <div class="stop-dot accent"><div class="stop-dot-inner"></div></div>
+          <div class="stop-content">
+            <div class="stop-time">19:10</div>
+            <div class="stop-name">Hotel lobby — Kotobuki-Ya crew transport</div>
+            <div class="stop-desc">Be in the Kimpton Alton lobby by 19:10. Kotobuki-Ya CPS takes 30–45 minutes to SFO Terminal I depending on 101 traffic. Check in for SQ33, and you're on your way home.</div>
+            <div class="stop-meta">Kotobuki-Ya: +1 650-344-7955 · Pickup 19:15 PDT · SQ33 departs 21:30 PDT · Terminal I</div>
+            <div class="stop-tags"><span class="stop-tag red">Be ready by 19:10</span><span class="stop-tag navy">SQ33 · 21:30 dep</span></div>
+          </div>
         </div>
-        <p class="card-desc">The ground-floor lobby is free — covered in vivid 1934 WPA murals of California life (farming, Depression-era streets, factories). Genuinely impressive art. The elevator to the observation deck is $10 and gives 360° views: Bay, Alcatraz, Golden Gate, Bay Bridge, downtown. Go at 10:00 opening for shortest queue and clearest morning views.</p>
-        <div class="card-pills">
-          <span class="pill">1 Telegraph Hill Blvd</span>
-          <span class="pill">Opens 10:00 daily</span>
-          <span class="pill">$10 adult (elevator) · Murals: free</span>
-          <span class="pill">Allow 45–60 min total</span>
-        </div>
+
       </div>
     </div>
 
-    <!-- SAUSALITO -->
-    <div class="time-block">
-      <div class="time-label">Mid-Day + Afternoon · 11:30 – 17:00</div>
+    <!-- PRACTICAL TIPS -->
+    <div class="section" style="padding-bottom: 0;">
+      <div class="section-label">Practical Info</div>
+      <h2 class="section-title">Getting Around &amp; Tips</h2>
 
-      <div class="connector">Walk 10 min from Coit Tower down to Pier 41 (Blue & Gold Fleet)</div>
-
-      <div class="card">
-        <div class="card-head">
-          <span class="card-icon">⛵</span>
-          <span class="card-name">Ferry to Sausalito · Pier 41</span>
-          <span class="badge b-pay">~$29.50 roundtrip</span>
-        </div>
-        <p class="card-desc">Blue & Gold Fleet departs Pier 41 — a 10-min walk from hotel. Buy roundtrip tickets at the pier box office, walk-up, no reservation needed. Target the ~11:45 AM departure (verify current spring schedule at blueandgoldfleet.com closer to the date). 30-minute bay crossing with views of Alcatraz and the Golden Gate is a genuine highlight.</p>
-        <div class="card-pills">
-          <span class="pill">Pier 41, Fisherman's Wharf</span>
-          <span class="pill">~$29.50 roundtrip adult</span>
-          <span class="pill">30 min each way</span>
-          <span class="pill">Walk-up · No advance booking needed</span>
-          <span class="pill pill-accent">Verify spring schedule: blueandgoldfleet.com</span>
-        </div>
+      <div class="collapse-trigger" onclick="toggle(this)">
+        Getting Around San Francisco <span class="collapse-arrow">▼</span>
       </div>
-
-      <div class="card">
-        <div class="card-head">
-          <span class="card-icon">🚤</span>
-          <span class="card-name">Sausalito · Bridgeway Walk + Houseboat Colony</span>
-          <span class="badge b-free">Free to explore</span>
-        </div>
-        <p class="card-desc">Walk south along Bridgeway Boulevard from the ferry dock — galleries, boutiques, dramatic views back across the Bay to SF. Then walk north toward <strong>Waldo Point Harbor</strong> (10–15 min from dock) to see the floating houseboat community: hundreds of permanently moored houseboats, each one eccentrically unique. Very photogenic, very unlike anything in SF proper. Public waterfront path, completely free.</p>
-        <div class="card-pills">
-          <span class="pill">Bridgeway Blvd (main strip from ferry dock)</span>
-          <span class="pill">Waldo Point Harbor: walk north from dock</span>
-          <span class="pill">Free to explore · Spend 2–3 hrs total</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-head">
-          <span class="card-icon">🐟</span>
-          <span class="card-name">Lunch · FISH · Sausalito</span>
-          <span class="badge b-food">$20–30/person</span>
-        </div>
-        <p class="card-desc">The best casual seafood in Sausalito. Sustainable daily catch, counter service with outdoor picnic tables directly on the water. Menu changes daily — fish tacos, ceviche, grilled fish, remarkable chowder. Arrive before 12:00 or after 13:30 to avoid the peak queue. Must-order: the fish sandwich or whatever grilled fish is chalked on the board.</p>
-        <div class="card-pills">
-          <span class="pill">350 Harbor Drive, off Bridgeway</span>
-          <span class="pill">Counter service · No reservations</span>
-          <span class="pill">$20–30/person</span>
-          <span class="pill pill-accent">Arrive before noon or after 13:30</span>
-        </div>
-      </div>
-
-      <div class="connector">Walk back to ferry dock · Catch ~16:30 return ferry · Arrive Pier 41 ~17:00</div>
-    </div>
-
-    <!-- FINAL EVENING -->
-    <div class="time-block">
-      <div class="time-label">Late Afternoon · 17:00 – 19:30</div>
-
-      <div class="card">
-        <div class="card-head">
-          <span class="card-icon">🌅</span>
-          <span class="card-name">Sunset at Victorian Park · Ghirardelli</span>
-          <span class="badge b-free">Free</span>
-        </div>
-        <p class="card-desc">Walk from Pier 41 west along the waterfront back toward the hotel (~20 min). Stop at Victorian Park (Hyde & Beach St, right at the cable car turnaround steps from the hotel) for the bay sunset over the Golden Gate. Grab a Ghirardelli hot chocolate at the square nearby. A perfect last hour in San Francisco.</p>
-        <div class="card-pills">
-          <span class="pill">Victorian Park: Hyde & Beach St (steps from hotel)</span>
-          <span class="pill">Ghirardelli hot cocoa: ~$5–6</span>
-          <span class="pill">~2 hrs of breathing room before pickup</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-head">
-          <span class="card-icon">🧳</span>
-          <span class="card-name">Pack · Check out · Airport Pickup</span>
-          <span class="badge b-info">Depart 20:30</span>
-        </div>
-        <p class="card-desc">Return to hotel by 19:30. Pack, check out, and settle any outstanding bills. Crew transport (Kotobuki-Ya CPS) arrives at <strong>20:30</strong> — that's 2h15min before STD of ~22:45. Drop-off at SFO International Terminal, Courtyard G. SQ31 SFO→SIN.</p>
-        <div class="card-pills">
-          <span class="pill pill-accent">Back at hotel by 19:30</span>
-          <span class="pill pill-accent">Pickup: 20:30</span>
-          <span class="pill">Drop-off: Courtyard G, SFO Intl Terminal</span>
-          <span class="pill">SQ31 · STD ~22:45 PDT</span>
-          <span class="pill">Transport: Kotobuki-Ya CPS · +1 650-344-7955</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════ -->
-  <!-- PRACTICAL TIPS                        -->
-  <!-- ══════════════════════════════════════ -->
-  <section class="tips-section" id="tips">
-    <h2 class="tips-heading">Practical Tips</h2>
-    <div class="tips-grid">
-
-      <div class="tip-card">
-        <div class="tip-title">Getting Around</div>
+      <div class="collapse-body">
         <ul>
-          <li>Uber/Lyft: best for cross-city hops ($10–25)</li>
-          <li>F-line streetcar: waterfront → Ferry Building ($3)</li>
-          <li>Powell-Hyde cable car: hotel → downtown ($9)</li>
-          <li>MUNI #39 bus: Wharf → Coit Tower ($2.50)</li>
-          <li>Walking: Fisherman's Wharf & North Beach are flat</li>
-          <li>Clipper card: load at Walgreens or MUNI station</li>
+          <li><strong>Muni Day Pass (US$24):</strong> Covers all buses, trams (F-Market), Metro, and cable cars. Buy on the MuniMobile app or at Walgreens.</li>
+          <li><strong>Cable Cars:</strong> The Powell-Hyde line runs directly past your hotel — touristy but genuinely classic SF. US$9 single ride, included in Muni day pass.</li>
+          <li><strong>F-Market Historic Streetcar:</strong> Runs along Market St, Embarcadero, and up to Fisherman's Wharf. Best way to reach the Ferry Building on Day 2.</li>
+          <li><strong>Lyft / Uber:</strong> Budget US$12–18 for most cross-city trips. Usually 3–4 minutes from Fisherman's Wharf.</li>
+          <li><strong>Walking:</strong> The Day 2 loop from Ferry Building to Coit Tower and back is almost entirely flat once you're off Telegraph Hill.</li>
         </ul>
       </div>
 
-      <div class="tip-card">
-        <div class="tip-title">Money & Tipping</div>
+      <div class="collapse-trigger" onclick="toggle(this)">
+        Safety Notes <span class="collapse-arrow">▼</span>
+      </div>
+      <div class="collapse-body">
         <ul>
-          <li>Restaurants: 20% is the minimum expectation</li>
-          <li>Cafe counter: $1–2 per drink at the tip prompt</li>
-          <li>Uber/Lyft: 15–20% (app defaults are fine)</li>
-          <li>Bills often include 4–5% SF Health Surcharge — tip on top</li>
-          <li>Cash only: Golden Gate Bakery + some market stalls</li>
-          <li>Bring $40–60 cash as backup; everything else: tap-to-pay</li>
+          <li>Fisherman's Wharf, North Beach, Chinatown, and the Ferry Building are all safe, well-trafficked areas day and evening.</li>
+          <li>The Tenderloin district (between Union Square and Civic Center) has open drug use — it's not on this itinerary and easy to avoid.</li>
+          <li>Keep bags in front and phones pocketed on public transport — petty theft does occur.</li>
+          <li>Car break-ins are very common in SF — never leave anything visible in a rental.</li>
         </ul>
       </div>
 
-      <div class="tip-card">
-        <div class="tip-title">What to Wear</div>
+      <div class="collapse-trigger" onclick="toggle(this)">
+        Weather &amp; What to Wear <span class="collapse-arrow">▼</span>
+      </div>
+      <div class="collapse-body">
         <ul>
-          <li>Daytime: 59–63°F (15–17°C)</li>
-          <li>Evening &amp; waterfront: 50–55°F with wind chill</li>
-          <li>Layers: t-shirt + fleece + windproof/water-resistant jacket</li>
-          <li>Alcatraz: pack an extra layer — 10–15°F colder on island</li>
-          <li>Battery Spencer: fully exposed and windy — hat helps</li>
-          <li>Compact rain jacket = windbreaker = one item, always useful</li>
+          <li>Early April: 12–17°C with overcast mornings that often clear by afternoon.</li>
+          <li>Wind on the Golden Gate Bridge is reliably strong — pack a windproof layer, not just a cardigan.</li>
+          <li>SF's famous fog ("Karl") can roll in from the Pacific mid-afternoon, especially near the Wharf.</li>
+          <li>Comfortable walking shoes are essential — the Filbert Steps up to Coit Tower are steep.</li>
+          <li>A compact rain jacket takes up minimal space and is worth having.</li>
         </ul>
       </div>
 
-      <div class="tip-card">
-        <div class="tip-title">Safety</div>
+      <div class="collapse-trigger" onclick="toggle(this)">
+        What to Book Before You Land <span class="collapse-arrow">▼</span>
+      </div>
+      <div class="collapse-body">
         <ul>
-          <li>Your area (Wharf, North Beach, Marina) is safe</li>
-          <li>Avoid: Tenderloin, SoMa 6th St, UN Plaza — none are on this itinerary</li>
-          <li>Pickpockets target Pier 39 tourist crowds — use front pocket</li>
-          <li>Do not leave anything visible in a rental car</li>
-          <li>After dark: stay on Columbus Ave and the lit waterfront strip</li>
+          <li><strong>Alcatraz ferry (essential — do it now):</strong> cityexperiences.com · Day Tour US$47.95 · Morning departures sell out weeks ahead. Book 09:00 or 10:20 for Wed 1 Apr.</li>
+          <li><strong>Fog Harbor Fish House (Day 1 dinner):</strong> OpenTable — reserve 19:30 for Wed 1 Apr for bay-view seating.</li>
+          <li><strong>City View dim sum (Day 2 lunch, optional):</strong> Call +1 415-398-2838 to book 11:30 on Thu 2 Apr for sit-down trolley service.</li>
         </ul>
       </div>
 
-      <div class="tip-card">
-        <div class="tip-title">Useful Apps</div>
-        <ul>
-          <li>Transit App — real-time MUNI arrivals</li>
-          <li>511 SF Bay — ferries + regional transit</li>
-          <li>Uber or Lyft (Lyft slightly cheaper in SF)</li>
-          <li>OpenTable / Resy — dinner reservations</li>
-          <li>Google Maps — reliable for transit routing (use Transit mode)</li>
-          <li>Yelp — still widely used for hours and recent reviews</li>
-        </ul>
-      </div>
-
-      <div class="tip-card">
-        <div class="tip-title">SQ Crew — Station Notes</div>
-        <ul>
-          <li>Hotel: Kimpton Alton · Tel 1-415-771-9000</li>
-          <li>SQ Duty Manager: +1 650-353-1693</li>
-          <li>Taxi SFO→hotel ~$60–80 one-way (keep receipt for reimbursement)</li>
-          <li>Crew transport: Kotobuki-Ya CPS · +1 650-344-7955</li>
-          <li>Pickup: 2h15min before STD · Call time: 3h15min</li>
-          <li>Drop-off: Courtyard G, SFO International Terminal</li>
-          <li>No fruits or meat products into USA</li>
-          <li>Legal drinking age: 21</li>
-          <li>City risk: MEDIUM · Security: AMBER</li>
-          <li>Tap water is excellent — Hetch Hetchy reservoir</li>
-        </ul>
+      <div class="note-amber" style="margin-top: 24px;">
+        <strong>Arrival day tip (Mar 31):</strong> Cortisol from the flight will carry you for a few hours after landing. Resist the urge to push through and explore — sleep by 14:00 to reset your circadian clock. A light meal, a shower, and a short walk to Ghirardelli Square is plenty for today.
       </div>
 
     </div>
-  </section>
 
-</main>
+    <footer>
+      <span>Built with Claude · Mar 2026</span>
+      <span>SQ32 / SQ33 · Kimpton Alton Hotel · SFO</span>
+    </footer>
 
-<footer>
-  Built with Claude · March 2026 · Route-optimised for Kimpton Alton Hotel base · dnnklls.github.io/sf-itinerary-2026
-</footer>
+  </div><!-- /content -->
+
+  <script>
+    function toggle(el) {
+      el.classList.toggle('open');
+      el.nextElementSibling.classList.toggle('open');
+    }
+  </script>
 
 </body>
 </html>
