@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>San Francisco · April 2026</title>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600;9..144,800&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <style>
     :root {
       --bg: #f5f0e8;
@@ -497,6 +498,23 @@
     }
     .pickup-card-detail { font-size: 13px; color: rgba(255,255,255,0.75); }
 
+    /* MAP */
+    .map-container {
+      height: 280px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      margin-bottom: 28px;
+    }
+    .leaflet-popup-content-wrapper {
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 13px;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+    .leaflet-popup-content { margin: 10px 14px; }
+
     /* FOOTER */
     footer {
       margin: 64px auto 0;
@@ -587,6 +605,8 @@
         First taste of the Wharf &amp; Embarcadero
       </h2>
 
+      <div id="map-day1" class="map-container"></div>
+
       <div class="note-red">
         <strong>Keep this flexible:</strong> Only do this if you wake up from your arrival nap feeling genuinely okay. If you're wrecked, skip it and roll these vibes into the full days.
       </div>
@@ -631,6 +651,8 @@
         <span class="section-icon">2</span>
         Alcatraz, Golden Gate &amp; the Waterfront
       </h2>
+
+      <div id="map-day2" class="map-container"></div>
 
       <div class="tip">
         <strong>Today is your big day out:</strong> proper sleep, then Alcatraz in the morning, Golden Gate in the afternoon, and a relaxed waterfront evening.
@@ -861,6 +883,51 @@
       el.classList.toggle('open');
       el.nextElementSibling.classList.toggle('open');
     }
+  </script>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    function buildMap(id, stops, color) {
+      const map = L.map(id, { scrollWheelZoom: false });
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
+        maxZoom: 19
+      }).addTo(map);
+
+      const latlngs = stops.map(s => s.latlng);
+      L.polyline(latlngs, { color, weight: 3, opacity: 0.7, dashArray: '7 5' }).addTo(map);
+
+      stops.forEach(stop => {
+        const icon = L.divIcon({
+          className: '',
+          html: `<div style="background:${color};color:#fff;border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,0.25)">${stop.label}</div>`,
+          iconSize: [26, 26],
+          iconAnchor: [13, 13],
+          popupAnchor: [0, -16]
+        });
+        L.marker(stop.latlng, { icon })
+          .bindPopup(`<strong>${stop.label}. ${stop.name}</strong>`)
+          .addTo(map);
+      });
+
+      map.fitBounds(L.latLngBounds(latlngs), { padding: [32, 32] });
+    }
+
+    buildMap('map-day1', [
+      { latlng: [37.8064, -122.4225], label: 'A', name: 'Hotel — Kimpton Alton' },
+      { latlng: [37.8057, -122.4234], label: 'B', name: 'Ghirardelli Square' },
+      { latlng: [37.8087, -122.4098], label: 'C', name: 'Pier 39' }
+    ], '#b8860b');
+
+    buildMap('map-day2', [
+      { latlng: [37.8064, -122.4225], label: 'A', name: 'Hotel — Kimpton Alton' },
+      { latlng: [37.8066, -122.4240], label: 'B', name: 'The Buena Vista' },
+      { latlng: [37.8077, -122.4118], label: 'C', name: 'Pier 33 — Alcatraz Ferry' },
+      { latlng: [37.8089, -122.4104], label: 'D', name: 'Boudin Bakery' },
+      { latlng: [37.8034, -122.4534], label: 'E', name: 'Crissy Field' },
+      { latlng: [37.8077, -122.4754], label: 'F', name: 'Golden Gate Bridge' },
+      { latlng: [37.8057, -122.4234], label: 'G', name: 'Ghirardelli Square' }
+    ], '#c0392b');
   </script>
 
 </body>
